@@ -1,12 +1,15 @@
 import { useState } from 'react'
+import Footer from '../src/layouts/Footer'
+import Header from '../src/layouts/Header'
 import Toolbar from '../src/layouts/Toolbar'
 
 function App() {
 
   return (
     <>
-      <h1>Note Taker</h1>
+      <Header/>
       <Toolbar/>
+      <Footer/>
     </>
   )
 }
