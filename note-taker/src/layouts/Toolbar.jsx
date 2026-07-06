@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button } from 'react-bootstrap'
+import '../styles/ToolbarStyle.css'
 
 function Toolbar() {
 
@@ -28,38 +29,69 @@ function Toolbar() {
 
   return (
     <>
-      <div id="mode-buttons">
-        <Button disabled={isNoteMode} onClick={changeMode}>Notes</Button>
-        <Button disabled={!isNoteMode} onClick={changeMode}>Quiz</Button>
-      </div>
-      <div id="state-buttons">
-        <Button 
-          onClick={() => changeAnnotation(DEFINITION_INT)}
-          active={annotationState === DEFINITION_INT}
-        >
-          Definition
-        </Button>
-
-        <Button 
-          onClick={() => changeAnnotation(FACT_INT)}
-          active={annotationState === FACT_INT}
-        >
-          Fact
-        </Button>
-
-        <Button 
-          onClick={() => changeAnnotation(EXAMPLE_INT)}
-          active={annotationState === EXAMPLE_INT}
-        >
-          Example
-        </Button>
-
-        <Button 
-          onClick={() => changeAnnotation(CLEAR_INT)} 
-          disabled={annotationState == CLEAR_INT}
-        >
-          Clear
-        </Button>
+      <div className="toolbar">x
+        <div className="mode-row">
+          <Button
+            variant="light"
+            className={`mode-btn ${isNoteMode ? 'active' : ''}`}
+            onClick={changeMode}
+            aria-pressed={isNoteMode}
+          >
+            <span>Notes</span>
+          </Button>
+          <Button
+            variant="light"
+            className={`mode-btn ${!isNoteMode ? 'active' : ''}`}
+            onClick={changeMode}
+            aria-pressed={!isNoteMode}
+          >
+            {/* <HelpCircle size={18} strokeWidth={2} /> */}
+            <span>Quiz</span>
+          </Button>
+        </div>
+        <div className="annotation-row">
+          <div className="annotation-group">
+            <Button
+              variant="outline-secondary"
+              size="sm"
+              className={`annotation-btn tag-definition ${annotationState === DEFINITION_INT ? 'active' : ''}`}
+              onClick={() => changeAnnotation(DEFINITION_INT)}
+              aria-pressed={annotationState === DEFINITION_INT}
+            >
+              <span>Definition</span>
+            </Button>
+  
+            <Button
+              variant="outline-secondary"
+              size="sm"
+              className={`annotation-btn tag-fact ${annotationState === FACT_INT ? 'active' : ''}`}
+              onClick={() => changeAnnotation(FACT_INT)}
+              aria-pressed={annotationState === FACT_INT}
+            >
+              <span>Fact</span>
+            </Button>
+  
+            <Button
+              variant="outline-secondary"
+              size="sm"
+              className={`annotation-btn tag-example ${annotationState === EXAMPLE_INT ? 'active' : ''}`}
+              onClick={() => changeAnnotation(EXAMPLE_INT)}
+              aria-pressed={annotationState === EXAMPLE_INT}
+            >
+              <span>Example</span>
+            </Button>
+          </div>
+  
+          <Button
+            variant="outline-danger"
+            size="sm"
+            className="clear-btn"
+            onClick={() => changeAnnotation(CLEAR_INT)}
+            disabled={annotationState === CLEAR_INT}
+          >
+            <span>Clear</span>
+          </Button>
+        </div>
       </div>
     </>
   )

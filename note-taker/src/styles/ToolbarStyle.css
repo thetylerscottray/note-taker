@@ -1,0 +1,146 @@
+.toolbar {
+  --toolbar-border: #e5e7eb;
+  --text-primary: #1f2937;
+  --text-muted: #6b7280;
+  --accent: #111827;
+  --surface-hover: #f3f4f6;
+
+  --tag-definition: #3b82f6;
+  --tag-fact: #10b981;
+  --tag-example: #8b5cf6;
+  --tag-clear: #ef4444;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid var(--toolbar-border);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* -------- Mode toggle row (Notes / Quiz) --------
+   Bootstrap's Button is variant="light"; we override its
+   background/border here and handle the 50/50 split ourselves. */
+
+.mode-row {
+  display: flex;
+  width: 100%;
+}
+
+.mode-row .mode-btn {
+  flex: 1 1 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0 !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--text-muted) !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: none !important;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.mode-row .mode-btn:hover {
+  background: var(--surface-hover) !important;
+}
+
+.mode-row .mode-btn.active {
+  color: var(--accent) !important;
+  border-bottom-color: var(--accent) !important;
+}
+
+.mode-row .mode-btn svg {
+  flex-shrink: 0;
+}
+
+/* -------- Annotation row -------- */
+
+.annotation-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-top: 1px solid var(--toolbar-border);
+}
+
+.annotation-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* Small tag-style annotation buttons.
+   Base variant is outline-secondary; we recolor per tag on top. */
+.annotation-btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem !important;
+  font-size: 0.8rem !important;
+  font-weight: 500;
+  border-radius: 999px !important;
+  border-color: var(--toolbar-border) !important;
+  color: var(--text-muted) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.annotation-btn:hover {
+  background: var(--surface-hover) !important;
+  border-color: var(--toolbar-border) !important;
+}
+
+.annotation-btn svg {
+  flex-shrink: 0;
+}
+
+/* Color-coded active states, one per annotation type */
+.annotation-btn.tag-definition.active {
+  background: color-mix(in srgb, var(--tag-definition) 12%, white) !important;
+  border-color: var(--tag-definition) !important;
+  color: var(--tag-definition) !important;
+}
+
+.annotation-btn.tag-fact.active {
+  background: color-mix(in srgb, var(--tag-fact) 12%, white) !important;
+  border-color: var(--tag-fact) !important;
+  color: var(--tag-fact) !important;
+}
+
+.annotation-btn.tag-example.active {
+  background: color-mix(in srgb, var(--tag-example) 12%, white) !important;
+  border-color: var(--tag-example) !important;
+  color: var(--tag-example) !important;
+}
+
+/* -------- Clear button (visually separated, right-justified) --------
+   Base variant is outline-danger; dashed border + auto margin sets it apart. */
+
+.clear-btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem !important;
+  font-size: 0.8rem !important;
+  font-weight: 500;
+  border-radius: 999px !important;
+  border-style: dashed !important;
+  box-shadow: none !important;
+  margin-left: auto;
+}
+
+.clear-btn:disabled {
+  opacity: 0.35;
+  border-style: solid !important;
+}
+
+.clear-btn svg {
+  flex-shrink: 0;
+}

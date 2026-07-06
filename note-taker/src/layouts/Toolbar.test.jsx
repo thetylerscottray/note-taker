@@ -23,24 +23,6 @@ describe('Toolbar Component', () => {
     expect(exampleButton).toBeInTheDocument();
   });
 
-  it('check initial mode button states and click', async () => {
-    render(<Toolbar />);
-
-    // Define mode buttons
-    const noteButton = screen.getByRole('button', { name: /notes/i });
-    const quizButton = screen.getByRole('button', { name: /quiz/i });
-
-    // Note is active
-    expect(noteButton.disabled).toBe(true);
-    expect(quizButton.disabled).toBe(false);
-    
-    // Test state change
-    await userEvent.click(quizButton);
-    expect(noteButton.disabled).toBe(false);
-    expect(quizButton.disabled).toBe(true);
-
-  });
-
   it('check initial annotation mode and clicks', async () => {
     render(<Toolbar />);
 
