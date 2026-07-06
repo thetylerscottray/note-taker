@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import '../styles/ToolbarStyle.css'
+import { PiNotePencil, PiRocket, PiTag, PiEmpty } from "react-icons/pi";
+
 
 function Toolbar() {
 
@@ -49,6 +51,7 @@ function Toolbar() {
             onClick={changeMode}
             aria-pressed={isNoteMode}
           >
+            <PiNotePencil/>
             <span>Notes</span>
           </Button>
           <Button
@@ -56,8 +59,8 @@ function Toolbar() {
             className={`mode-btn ${!isNoteMode ? 'active' : ''}`}
             onClick={changeMode}
             aria-pressed={!isNoteMode}
-          >
-            {/* <HelpCircle size={18} strokeWidth={2} /> */}
+            >
+            <PiRocket/>
             <span>Quiz</span>
           </Button>
         </div>
@@ -71,6 +74,7 @@ function Toolbar() {
                 onClick={() => changeAnnotation(DEFINITION_INT)}
                 aria-pressed={annotationState == DEFINITION_INT}
               >
+                <PiTag/>
                 <span>Definition</span>
               </Button>
     
@@ -81,6 +85,7 @@ function Toolbar() {
                 onClick={() => changeAnnotation(FACT_INT)}
                 aria-pressed={annotationState == FACT_INT}
               >
+                <PiTag/>
                 <span>Fact</span>
               </Button>
     
@@ -91,6 +96,7 @@ function Toolbar() {
                 onClick={() => changeAnnotation(EXAMPLE_INT)}
                 aria-pressed={annotationState == EXAMPLE_INT}
               >
+                <PiTag/>
                 <span>Example</span>
               </Button>
             </div>
@@ -102,6 +108,7 @@ function Toolbar() {
               onClick={() => changeAnnotation(CLEAR_INT)}
               disabled={annotationState == CLEAR_INT}
             >
+              <PiEmpty/>
               <span>Clear</span>
             </Button>
           </div>
