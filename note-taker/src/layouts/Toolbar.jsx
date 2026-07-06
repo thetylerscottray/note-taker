@@ -59,49 +59,51 @@ function Toolbar() {
             <span>Quiz</span>
           </Button>
         </div>
-        <div className="annotation-row">
-          <div className="annotation-group">
+        { isNoteMode && 
+          <div className="annotation-row">
+            <div className="annotation-group">
+              <Button
+                variant="outline-secondary"
+                size="sm"
+                className={`annotation-btn tag-definition ${annotationState == DEFINITION_INT ? 'active' : ''}`}
+                onClick={() => changeAnnotation(DEFINITION_INT)}
+                aria-pressed={annotationState == DEFINITION_INT}
+              >
+                <span>Definition</span>
+              </Button>
+    
+              <Button
+                variant="outline-secondary"
+                size="sm"
+                className={`annotation-btn tag-fact ${annotationState == FACT_INT ? 'active' : ''}`}
+                onClick={() => changeAnnotation(FACT_INT)}
+                aria-pressed={annotationState == FACT_INT}
+              >
+                <span>Fact</span>
+              </Button>
+    
+              <Button
+                variant="outline-secondary"
+                size="sm"
+                className={`annotation-btn tag-example ${annotationState == EXAMPLE_INT ? 'active' : ''}`}
+                onClick={() => changeAnnotation(EXAMPLE_INT)}
+                aria-pressed={annotationState == EXAMPLE_INT}
+              >
+                <span>Example</span>
+              </Button>
+            </div>
+    
             <Button
-              variant="outline-secondary"
+              variant="outline-danger"
               size="sm"
-              className={`annotation-btn tag-definition ${annotationState == DEFINITION_INT ? 'active' : ''}`}
-              onClick={() => changeAnnotation(DEFINITION_INT)}
-              aria-pressed={annotationState == DEFINITION_INT}
+              className="clear-btn"
+              onClick={() => changeAnnotation(CLEAR_INT)}
+              disabled={annotationState == CLEAR_INT}
             >
-              <span>Definition</span>
-            </Button>
-  
-            <Button
-              variant="outline-secondary"
-              size="sm"
-              className={`annotation-btn tag-fact ${annotationState == FACT_INT ? 'active' : ''}`}
-              onClick={() => changeAnnotation(FACT_INT)}
-              aria-pressed={annotationState == FACT_INT}
-            >
-              <span>Fact</span>
-            </Button>
-  
-            <Button
-              variant="outline-secondary"
-              size="sm"
-              className={`annotation-btn tag-example ${annotationState == EXAMPLE_INT ? 'active' : ''}`}
-              onClick={() => changeAnnotation(EXAMPLE_INT)}
-              aria-pressed={annotationState == EXAMPLE_INT}
-            >
-              <span>Example</span>
+              <span>Clear</span>
             </Button>
           </div>
-  
-          <Button
-            variant="outline-danger"
-            size="sm"
-            className="clear-btn"
-            onClick={() => changeAnnotation(CLEAR_INT)}
-            disabled={annotationState == CLEAR_INT}
-          >
-            <span>Clear</span>
-          </Button>
-        </div>
+      }
       </div>
     </>
   )
