@@ -26,6 +26,8 @@ function Toolbar() {
     const newMode = !isNoteMode;
      setIsNoteMode(newMode);
      localStorage.setItem('isNoteMode', newMode);
+
+     setAnnotationState(CLEAR_INT);
   }
 
   // Toggle the annotation state
@@ -59,7 +61,7 @@ function Toolbar() {
             <span>Quiz</span>
           </Button>
         </div>
-        { isNoteMode && 
+        { !!isNoteMode && 
           <div className="annotation-row">
             <div className="annotation-group">
               <Button
