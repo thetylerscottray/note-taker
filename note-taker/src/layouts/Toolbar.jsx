@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import { Button } from 'react-bootstrap'
-import '../styles/ToolbarStyle.css'
-import { PiNotePencil, PiRocket, PiTag, PiEmpty } from "react-icons/pi";
+import { useState } from 'react';
+import { Button } from 'react-bootstrap';
+import { PiEmpty, PiNotePencil, PiRocket, PiTag } from "react-icons/pi";
+import '../styles/ToolbarStyle.css';
 
 
 function Toolbar() {
