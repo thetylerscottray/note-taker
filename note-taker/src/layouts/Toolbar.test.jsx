@@ -40,4 +40,28 @@ describe('Toolbar Component', () => {
     expect(quizButton.disabled).toBe(true);
 
   });
+
+  it('check initial annotation mode and clicks', async () => {
+    render(<Toolbar />);
+
+    // Define annotation state buttons
+    const definitionButton = screen.getByRole('button', { name: /definition/i });
+    const factButton = screen.getByRole('button', { name: /fact/i });
+    const exampleButton = screen.getByRole('button', { name: /example/i });
+    const clearButton = screen.getByRole('button', { name: /clear/i });
+
+    // Clear is disabled
+    expect(clearButton.disabled).toBe(true);
+    
+    // Test annotation state change
+    await userEvent.click(definitionButton);
+    expect(definitionButton.classList.contains('active')).toBe(true);
+    expect(clearButton.disabled).toBe(false);
+    
+    // Click the same button again
+    await userEvent.click(definitionButton);
+    expect(definitionButton.classList.contains('active')).toBe(false);
+    expect(clearButton.disabled).toBe(true);
+
+  });
 });
