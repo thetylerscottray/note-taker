@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
-import { PiEmpty, PiNotePencil, PiRocket, PiTag } from "react-icons/pi";
+import { PiEmpty, PiTag } from "react-icons/pi";
 import '../styles/ToolbarStyle.css';
 
 
-function Toolbar() {
+function Toolbar({ isNoteMode }) {
 
   // Constants for tracking annotation state
   const CLEAR_INT = 0;
@@ -12,25 +12,10 @@ function Toolbar() {
   const FACT_INT = 2;
   const EXAMPLE_INT = 3;
 
-  // Toolbar state variables
-  const [isNoteMode, setIsNoteMode] = useState(() => {
-     const savedIsNoteMode = localStorage.getItem('isNoteMode');
-     return savedIsNoteMode !== null ? savedIsNoteMode === 'true' : true;
-   });
-
   const [annotationState, setAnnotationState] = useState(() => {
     const savedAnnotationState = localStorage.getItem('annotationState');
     return savedAnnotationState ? savedAnnotationState : CLEAR_INT;
   });
-
-  // Toggle the use-case mode
-  function changeMode() {
-    const newMode = !isNoteMode;
-     setIsNoteMode(newMode);
-     localStorage.setItem('isNoteMode', newMode);
-
-     setAnnotationState(CLEAR_INT);
-  }
 
   // Toggle the annotation state
   function changeAnnotation( selectedState ) {
@@ -44,26 +29,6 @@ function Toolbar() {
   return (
     <>
       <div className="toolbar">
-        <div className="mode-row">
-          <Button
-            variant="light"
-            className={`mode-btn ${isNoteMode ? 'active' : ''}`}
-            onClick={changeMode}
-            aria-pressed={isNoteMode}
-          >
-            <PiNotePencil/>
-            <span>Notes</span>
-          </Button>
-          <Button
-            variant="light"
-            className={`mode-btn ${!isNoteMode ? 'active' : ''}`}
-            onClick={changeMode}
-            aria-pressed={!isNoteMode}
-            >
-            <PiRocket/>
-            <span>Quiz</span>
-          </Button>
-        </div>
         { !!isNoteMode && 
           <div className="annotation-row">
             <div className="annotation-group">
